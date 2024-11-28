@@ -1,0 +1,122 @@
+
+/* Arka plan */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+}
+/* Başlık kısmı */
+header {                                        
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #bf1e2e; /* Kırmızı */
+    padding: 10px;
+}
+/* Logo kısmı */
+.logo {
+    width: 100px;
+    height: auto;
+}
+/* Başlık kısmındaki metin */
+h1 {
+    text-align: center;
+    color: #f9e000; /* Sarı */
+    width: 100%;
+    margin: 0;
+}
+/* Tablo kısmı */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #000000;
+}
+/* Tablonun kenarlıkları */
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #000000;
+}
+
+th {
+    background-color: #bf1e2e; /*  Kırmızı - Tablonun başlık kısmının arka plan rengi (id,Forma no,ad,soyad vs) */  
+    color: #f9e000; /* Sarı Tablonun başlık kısmındaki metinlerin rengi  (id,Forma no,ad,soyad vs) */
+    text-transform: uppercase; /* Tüm harfler büyük olur */
+}
+tbody tr:nth-child(odd) {
+    background-color: #d9c61b; /* Sarı */
+}
+tbody tr:nth-child(even) {
+    background-color: #bd1223;
+}
+.buttons {
+    margin: 20px 0;
+    text-align: center;
+    display: inline;
+}
+.button {
+    background-color: #f9e000; /* Sarı */
+    color: #bf1e2e; /* Kırmızı */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+.button:hover {
+    background-color: #bf1e2e; /* Kırmızı */
+    color: #f9e000; /* Sarı */
+}
+/* Pop-up stil */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #bf1e2e;
+    padding: 80px;
+    border-radius: 32px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.popup form {
+    display: flex;
+    flex-direction: column;
+}
+.popup input {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+}
+.popup button {
+    background-color: #bf1e2e;
+    color: #f9e000;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.popup button:hover {
+    background-color: #f9e000;
+    color: #bf1e2e;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+.ekle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

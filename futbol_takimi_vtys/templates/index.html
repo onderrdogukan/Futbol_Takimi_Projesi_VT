@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futbol Takımı Oyuncuları</title>    
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Takım Logosu" class="logo">
+        <h1>Futbol Takımının Oyuncuları</h1>
+    </header>
+
+    <div class="buttons">
+        <button class="button ekle" onclick="togglePopup()">Futbolcu Ekle</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Forma Numarası</th>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Pozisyon</th>
+                <th>Doğum Tarihi</th>
+                <th>Uyruk</th>
+                <th>Maaş (Yıllık)</th>
+                <th>Piyasa Değeri </th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for oyuncu in oyuncular %}
+                <tr>
+                    <td>{{ oyuncu[0] }}</td>
+                    <td>{{ oyuncu[1] }}</td>
+                    <td>{{ oyuncu[2] }}</td>
+                    <td>{{ oyuncu[3] }}</td>
+                    <td>{{ oyuncu[4] }}</td>
+                    <td>{{ oyuncu[5] }}</td>
+                    <td>{{ oyuncu[6] }}</td>
+                    <td>{{ oyuncu[7] }}</td>
+                    <td>{{ oyuncu[8] }}</td>
+                    <td>
+                        <a href="{{ url_for('futbolcu_sil', id=oyuncu[0]) }}">
+                            <button class="button" >Sil</button>
+                        </a>
+                        <div class="buttons">
+                            <button class="button" onclick="togglePopup_update('{{oyuncu[0]}}')">Güncelle</button>
+                        </div>
+
+
+                        <div class="overlay" id="overlay">
+        
+                        </div>
+                        <div class="popup" id="popup_guncelle{{oyuncu[0]}}">
+                            <form action="{{ url_for('futbolcu_guncelle',id = oyuncu[0]) }}" method="POST" onsubmit="return validateForm()">
+                                <input type="number" id="forma_no" name="forma_no" placeholder="Forma Numarası" required min="1" max="99">
+                                <input type="text" name="ad" placeholder="Ad" required>
+                                <input type="text" name="soyad" placeholder="Soyad" required>
+                                <input type="text" name="pozisyon" placeholder="Pozisyon" required>
+                                <input type="date" name="dogum_tarihi" placeholder="Doğum Tarihi" required>
+                                <input type="text" name="uyruk" placeholder="Uyruk" required>
+                                <input type="text" name="maas" placeholder="Maaş (Yıllık)" required>
+                                <input type="text" name="piyasa_degeri" placeholder="Piyasa Değeri" required>
+                                <button type="submit">Güncelle</button>
+                            </form>
+                            <button class="button" onclick="togglePopup_update('{{oyuncu[0]}}')">Kapat</button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pop-up için overlay ve form -->
+    <div class="overlay" id="overlay">
+        
+    </div>
+    <div class="popup" id="popup">
+        <form action="{{ url_for('futbolcu_ekle') }}" method="POST" onsubmit="return validateForm()">
+            <input type="number" id="forma_no" name="forma_no" placeholder="Forma Numarası" required min="1" max="99">
+            <input type="text" name="ad" placeholder="Ad" required>
+            <input type="text" name="soyad" placeholder="Soyad" required>
+            <input type="text" name="pozisyon" placeholder="Pozisyon" required>
+            <input type="date" name="dogum_tarihi" placeholder="Doğum Tarihi" required>
+            <input type="text" name="uyruk" placeholder="Uyruk" required>
+            <input type="text" name="maas" placeholder="Maaş" required>
+            <input type="text" name="piyasa_degeri" placeholder="Piyasa Değeri" required>
+            <button type="submit">Ekle</button>
+        </form>
+        <button class="button" onclick="togglePopup()">Kapat</button>
+    </div>
+
+    <script src="../static/index.js"></script>
+
+</body>
+</html>
